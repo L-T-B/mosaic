@@ -95,14 +95,14 @@ class TargetImage:
         img = Image.open(self.image_path)
         x = COLUMNS * TILE_SIZE + (COLUMNS - 1) * PIXEL_PADDING
         y = (ROWS - 1) * S_SIZE + (ROWS - 1) * PIXEL_PADDING + TILE_SIZE
-        img = ImageOps.fit(img, (x, y), Image.LANCZOS)
+        img = ImageOps.fit(img, (x, y), Image.Resampling.LANCZOS)
 
         small_img = img.resize(
             (
                 int(x / TILE_BLOCK_SIZE),
                 int(y / TILE_BLOCK_SIZE)
             ),
-            Image.ANTIALIAS)
+            Image.Resampling.LANCZOS)
 
         image_data = (img.convert('RGB'), small_img.convert('RGB'))
 
@@ -199,15 +199,15 @@ class MosaicImage:
 
 
         images = []
-        for x in range(int(picture_width // A4_width + 1)):
-            for y in range(int(picture_height // A4_height + 1)):
+        for x in range(int(picture_width // A4_WIDTH + 1)):
+            for y in range(int(picture_height // A4_HEIGHT + 1)):
                 box = (
-                    int(x * A4_width),
-                    int(y * A4_height),
-                    min(int((x + 1) * A4_width + 2.7 * PIXEL_PER_CM), picture_width),
-                    min(int((y + 1) * A4_height + 2.7 * PIXEL_PER_CM), picture_height)
+                    int(x * A4_WIDTH),
+                    int(y * A4_HEIGHT),
+                    min(int((x + 1) * A4_WIDTH + 2.7 * PIXEL_PER_CM), picture_width),
+                    min(int((y + 1) * A4_HEIGHT + 2.7 * PIXEL_PER_CM), picture_height)
                 )
-                n_image = Image.new("RGB", (int(A4_width+ 2.7 * PIXEL_PER_CM), int(A4_height+ 2.7 * PIXEL_PER_CM)), color="white")
+                n_image = Image.new("RGB", (int(A4_WIDTH+ 2.7 * PIXEL_PER_CM), int(A4_HEIGHT+ 2.7 * PIXEL_PER_CM)), color="white")
                 n_image.paste(self.image.crop(box), (0, 0))
                 images.append(n_image)
 
