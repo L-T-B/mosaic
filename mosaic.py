@@ -308,6 +308,6 @@ def mosaic(img_path, tiles_path):
 
 
 if __name__ == '__main__':
-    source_image = "test-6.png"
-    tile_dir = "files/"
+    source_image = input("Source image (eg. test-6.png): ")
+    tile_dir = input("Tile Directory (eg. ./files): ")
     mosaic(source_image, tile_dir)
