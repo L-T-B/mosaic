@@ -8,10 +8,11 @@ import cupy as np
 import numpy
 import strecher
 from tqdm import tqdm
+import multiprocessing
 
 multiprocessing.set_start_method('spawn', force=True)
 # Change these 3 config parameters to suit your needs...
-TILE_SIZE = 512  # height/width of mosaic tiles in pixels
+TILE_SIZE = 256  # 512 is too big for collab
 TILE_MATCH_RES = 50  # tile matching resolution (higher values give better fit but require more processing)
 ROWS = 33
 COLUMNS = 33
