@@ -9,6 +9,7 @@ import numpy
 import strecher
 from tqdm import tqdm
 
+multiprocessing.set_start_method('spawn', force=True)
 # Change these 3 config parameters to suit your needs...
 TILE_SIZE = 512  # height/width of mosaic tiles in pixels
 TILE_MATCH_RES = 50  # tile matching resolution (higher values give better fit but require more processing)
