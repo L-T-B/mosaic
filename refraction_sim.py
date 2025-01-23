@@ -67,13 +67,13 @@ def intersection_with_sphere(vec: Vector2Gleichung, fig, ax):
 
     # f = (-b +- sqrt(b^2 - 4*a*c)) / (2 * a)
 
-    unter_wurzel = b ** 2 - 4 * a * c
+    under_root = b ** 2 - 4 * a * c
 
-    if unter_wurzel < 0:
+    if under_root < 0:
         return None
 
-    f_0 = (-b + math.sqrt(unter_wurzel)) / (2 * a)
-    f_1 = (-b - math.sqrt(unter_wurzel)) / (2 * a)
+    f_0 = (-b + math.sqrt(under_root)) / (2 * a)
+    f_1 = (-b - math.sqrt(under_root)) / (2 * a)
 
     f = f_0 if vec.position(f_0).x >= vec.position(f_1).x else f_1
 
